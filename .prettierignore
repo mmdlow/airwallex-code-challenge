@@ -1,0 +1,11 @@
+.git
+.gitignore
+.eslintignore
+.all-contributorsrc
+.vscode
+.idea
+node_modules
+LICENSE
+build
+dist
+dist-ssr
