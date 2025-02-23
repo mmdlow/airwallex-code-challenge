@@ -1,5 +1,7 @@
 import { Container, Flex, Section, Heading, Box } from '@radix-ui/themes';
 import RequestInviteDialog from './invite/RequestInviteDialog';
+import { InviteContextProvider } from './invite/InviteContext';
+import RequestInviteSuccessDialog from './invite/RequestInviteSuccessDialog';
 
 const LandingPage = () => {
   return (
@@ -15,7 +17,10 @@ const LandingPage = () => {
               Be the first to know when we launch.
             </Heading>
             <Box>
-              <RequestInviteDialog />
+              <InviteContextProvider>
+                <RequestInviteDialog />
+                <RequestInviteSuccessDialog />
+              </InviteContextProvider>
             </Box>
           </Flex>
         </Section>

@@ -10,9 +10,17 @@ import {
 } from '@/views/components/form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, Dialog, Flex, TextField } from '@radix-ui/themes';
-import { ComponentPropsWithoutRef, ComponentRef, forwardRef, useEffect, useState } from 'react';
+import {
+  ComponentPropsWithoutRef,
+  ComponentRef,
+  forwardRef,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
+import { InviteContext } from './InviteContext';
 
 // TODO message constants
 const FormSchema = z
@@ -34,10 +42,14 @@ const RequestInviteDialog = forwardRef<
   ComponentRef<typeof Button>,
   ComponentPropsWithoutRef<typeof Button>
 >((props, ref) => {
+  const { setOpenSuccessDialog } = useContext(InviteContext);
   const [open, setOpen] = useState(false);
 
   const { mutate: requestInvite, isPending } = useRequestInviteMutation({
-    onSuccess: () => setOpen(false),
+    onSuccess: () => {
+      setOpen(false);
+      setOpenSuccessDialog(true);
+    },
     onError: error => {
       form.setError('email', {
         type: 'in_use',
@@ -68,6 +80,7 @@ const RequestInviteDialog = forwardRef<
         </Button>
       </Dialog.Trigger>
 
+      {/* TODO extract maxWidth */}
       <Dialog.Content maxWidth={'450px'} aria-describedby={undefined}>
         <Dialog.Title>Request an invite</Dialog.Title>
 
@@ -120,6 +133,12 @@ const RequestInviteDialog = forwardRef<
             </Flex>
 
             <Flex gap={'2'} justify={'end'} pt={'3'}>
+              <Dialog.Close>
+                <Button variant={'soft'} color="gray">
+                  Cancel
+                </Button>
+              </Dialog.Close>
+
               <Button type="submit" loading={isPending}>
                 Submit
               </Button>
