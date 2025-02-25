@@ -1,24 +1,24 @@
 import { Box, Flex, Heading } from '@radix-ui/themes';
+import clsx from 'clsx';
+import { MSG_BRAND } from '@/lib/messages';
+import { navHeight, navPaddingX, navPaddingY } from './Layout.utils';
+import styles from './Layout.module.css';
 
 const Header = () => {
   return (
-    // TODO refactor consts
     <Box
       asChild
-      height={'52px'}
-      px={'4'}
+      className={clsx(styles.LayoutNav, styles.Header)}
+      height={navHeight}
+      px={navPaddingX}
+      py={navPaddingY}
       flexShrink={'0'}
       position={'sticky'}
       top={'0'}
-      style={{
-        background: 'var(--gray-1)',
-        borderBottom: '1px solid var(--gray-a5)',
-        zIndex: 999,
-      }}
     >
       <header>
         <Flex align={'center'} gap={'2'} height={'100%'}>
-          <Heading>Broccoli & Co</Heading>
+          <Heading>{MSG_BRAND}</Heading>
         </Flex>
       </header>
     </Box>

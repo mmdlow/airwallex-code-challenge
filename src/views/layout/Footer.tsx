@@ -1,26 +1,26 @@
 import { Flex, Text } from '@radix-ui/themes';
+import { navHeight, navPaddingX, navPaddingY } from './Layout.utils';
+import clsx from 'clsx';
+import styles from './Layout.module.css';
+import { MSG_FOOTER } from '@/lib/messages';
 
 const Footer = () => {
   return (
-    // TODO refactor consts
     <Flex
       asChild
-      minHeight={'52px'}
-      direction={'column'}
+      className={clsx(styles.LayoutNav, styles.Footer)}
+      height={navHeight}
+      direction={{ initial: 'column', xs: 'row' }}
       align={'center'}
-      justify={'center'}
-      px={'4'}
-      py={'4'}
+      justify={'between'}
+      px={navPaddingX}
+      py={navPaddingY}
       flexShrink={'0'}
       gap={'2'}
-      style={{
-        background: 'var(--gray-1)',
-        borderTop: '1px solid var(--gray-a5)',
-      }}
     >
       <footer>
-        <Text>Made with ❤️ in Singapore.</Text>
-        <Text>Copyright © 2025 Broccoli & Co. All rights reserved.</Text>
+        <Text align={{ initial: 'center', xs: 'left' }}>{MSG_FOOTER[0]}</Text>
+        <Text>{MSG_FOOTER[1]}</Text>
       </footer>
     </Flex>
   );

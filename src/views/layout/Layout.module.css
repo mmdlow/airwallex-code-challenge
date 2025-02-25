@@ -1,0 +1,14 @@
+.LayoutNav {
+  --border-nav: 1px solid var(--gray-a5);
+
+  background: var(--gray-1);
+
+  &.Footer {
+    border-top: var(--border-nav);
+  }
+
+  &.Header {
+    border-bottom: var(--border-nav);
+    z-index: 2;
+  }
+}

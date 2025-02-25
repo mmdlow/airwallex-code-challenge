@@ -1,13 +1,14 @@
 import { ComponentPropsWithoutRef, ComponentRef, forwardRef, ImgHTMLAttributes } from 'react';
 import { AspectRatio, Container, Flex, Heading, Section } from '@radix-ui/themes';
 import clsx from 'clsx';
+import { layoutPaddingX } from './Layout.utils';
 import styles from './Hero.module.css';
 
 const HeroContainer = forwardRef<
   ComponentRef<typeof Container>,
   ComponentPropsWithoutRef<typeof Container>
 >(({ children, ...props }, ref) => (
-  <Container ref={ref} size={'4'} px={'4'} {...props}>
+  <Container ref={ref} size={'4'} px={layoutPaddingX} {...props}>
     {/* TODO set `height: 100%` property for `.rt-ContainerInner` class */}
     <Flex height={'100%'} direction={'column'} align={'center'} justify={'center'}>
       <Section>
