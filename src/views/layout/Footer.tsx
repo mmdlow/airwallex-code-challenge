@@ -9,8 +9,8 @@ const Footer = () => {
       direction={'column'}
       align={'center'}
       justify={'center'}
-      px={{ initial: '6', sm: '4' }}
-      py={{ initial: '6', sm: '4' }}
+      px={'4'}
+      py={'4'}
       flexShrink={'0'}
       gap={'2'}
       style={{
@@ -20,7 +20,7 @@ const Footer = () => {
     >
       <footer>
         <Text>Made with ❤️ in Singapore.</Text>
-        <Text>Copyright Broccoli & Co. All rights reserved.</Text>
+        <Text>Copyright © 2025 Broccoli & Co. All rights reserved.</Text>
       </footer>
     </Flex>
   );

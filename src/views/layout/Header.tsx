@@ -6,13 +6,14 @@ const Header = () => {
     <Box
       asChild
       height={'52px'}
-      px={{ initial: '6', sm: '4' }}
+      px={'4'}
       flexShrink={'0'}
       position={'sticky'}
       top={'0'}
       style={{
         background: 'var(--gray-1)',
         borderBottom: '1px solid var(--gray-a5)',
+        zIndex: 999,
       }}
     >
       <header>

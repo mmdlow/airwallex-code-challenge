@@ -23,7 +23,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <Flex direction={'column'} width={'100vw'} height={'100vh'}>
+        <Flex direction={'column'} height={'100vh'}>
           <Header />
 
           <Routes>
