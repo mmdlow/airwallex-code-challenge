@@ -20,19 +20,22 @@ import {
 } from 'react';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
+import { ATTRIBUTES, ACTIONS, MSG_FORM } from '@/lib/constants';
 import { InviteContext } from './InviteContext';
+import { DIALOG_MAX_WIDTH } from './Dialog.utils';
 
-// TODO message constants
 const FormSchema = z
   .object({
-    name: z.string({ required_error: 'Name is required' }).min(3, { message: 'Name is too short' }),
+    name: z
+      .string({ required_error: MSG_FORM.ERR_NAME_REQUIRED })
+      .min(3, { message: MSG_FORM.ERR_NAME_TOO_SHORT }),
     email: z
-      .string({ required_error: 'Email is required' })
-      .email({ message: 'Invalid email address' }),
-    confirmEmail: z.string().email({ message: 'Invalid email address' }),
+      .string({ required_error: MSG_FORM.ERR_EMAIL_REQUIRED })
+      .email({ message: MSG_FORM.ERR_EMAIL_INVALID }),
+    confirmEmail: z.string().email({ message: MSG_FORM.ERR_EMAIL_INVALID }),
   })
   .refine(data => data.email === data.confirmEmail, {
-    message: 'Emails do not match',
+    message: MSG_FORM.ERR_EMAIL_NO_MATCH,
     path: ['confirmEmail'],
   });
 
@@ -76,13 +79,12 @@ const RequestInviteDialog = forwardRef<
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger>
         <Button ref={ref} size={'3'} {...props}>
-          Request an invite
+          {ACTIONS.REQUEST_INVITE}
         </Button>
       </Dialog.Trigger>
 
-      {/* TODO extract maxWidth */}
-      <Dialog.Content maxWidth={'450px'} aria-describedby={undefined}>
-        <Dialog.Title>Request an invite</Dialog.Title>
+      <Dialog.Content maxWidth={DIALOG_MAX_WIDTH} aria-describedby={undefined}>
+        <Dialog.Title>{MSG_FORM.TITLE}</Dialog.Title>
 
         <FormProvider {...form}>
           <form id={formId} onSubmit={form.handleSubmit(onSubmit)}>
@@ -92,13 +94,12 @@ const RequestInviteDialog = forwardRef<
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel required>Full name</FormLabel>
+                    <FormLabel required>{ATTRIBUTES.NAME}</FormLabel>
                     <FormControl>
                       <TextField.Root {...field} />
                     </FormControl>
                     <FormMessage />
-                    {/* TODO extract message */}
-                    <FormDescription>Name should be at least 3 characters.</FormDescription>
+                    <FormDescription>{MSG_FORM.HINT_NAME_REQUIRED}</FormDescription>
                   </FormItem>
                 )}
               />
@@ -108,7 +109,7 @@ const RequestInviteDialog = forwardRef<
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel required>Email</FormLabel>
+                    <FormLabel required>{ATTRIBUTES.EMAIL}</FormLabel>
                     <FormControl>
                       <TextField.Root {...field} />
                     </FormControl>
@@ -122,7 +123,7 @@ const RequestInviteDialog = forwardRef<
                 name="confirmEmail"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel required>Confirm email</FormLabel>
+                    <FormLabel required>{MSG_FORM.EMAIL_CONFIRM}</FormLabel>
                     <FormControl>
                       <TextField.Root {...field} />
                     </FormControl>
@@ -135,12 +136,12 @@ const RequestInviteDialog = forwardRef<
             <Flex gap={'2'} justify={'end'} pt={'3'}>
               <Dialog.Close>
                 <Button variant={'soft'} color="gray">
-                  Cancel
+                  {ACTIONS.CANCEL}
                 </Button>
               </Dialog.Close>
 
               <Button type="submit" loading={isPending}>
-                Submit
+                {ACTIONS.SEND}
               </Button>
             </Flex>
           </form>

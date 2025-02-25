@@ -2,7 +2,7 @@ import { Flex, Text } from '@radix-ui/themes';
 import { navHeight, navPaddingX, navPaddingY } from './Layout.utils';
 import clsx from 'clsx';
 import styles from './Layout.module.css';
-import { MSG_FOOTER } from '@/lib/messages';
+import { MSG_FOOTER } from '@/lib/constants';
 
 const Footer = () => {
   return (

@@ -1,6 +1,7 @@
 import { forwardRef } from 'react';
-import { useFormField } from './use-form-field';
 import { Text } from '@radix-ui/themes';
+import { COLOR_MUTED } from '@/lib/constants';
+import { useFormField } from './use-form-field';
 
 const FormDescription = forwardRef<
   HTMLParagraphElement,
@@ -8,8 +9,7 @@ const FormDescription = forwardRef<
 >((props, ref) => {
   const { formDescriptionId } = useFormField();
 
-  // TODO semantic color
-  return <Text as="p" ref={ref} {...props} id={formDescriptionId} size={'1'} color="gray" />;
+  return <Text as="p" ref={ref} {...props} id={formDescriptionId} size={'1'} color={COLOR_MUTED} />;
 });
 
 FormDescription.displayName = 'FormDescription';

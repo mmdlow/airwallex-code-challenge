@@ -1,24 +1,24 @@
 import { Box, Button, Dialog, Flex, Heading, Text, VisuallyHidden } from '@radix-ui/themes';
 import { useContext } from 'react';
+import { MSG_INVITE_SUCCESS } from '@/lib/constants';
 import { InviteContext } from './InviteContext';
+import { DIALOG_MAX_WIDTH } from './Dialog.utils';
 
 const RequestInviteSuccessDialog = () => {
   const { openSuccessDialog, setOpenSuccessDialog } = useContext(InviteContext);
 
   return (
     <Dialog.Root open={openSuccessDialog} onOpenChange={setOpenSuccessDialog}>
-      {/* TODO extract maxWidth */}
-      {/* TODO extract message */}
-      <Dialog.Content maxWidth={'450px'} aria-describedby={undefined}>
+      <Dialog.Content maxWidth={DIALOG_MAX_WIDTH} aria-describedby={undefined}>
         <VisuallyHidden>
-          <Dialog.Title>Request success</Dialog.Title>
+          <Dialog.Title>{MSG_INVITE_SUCCESS.TITLE}</Dialog.Title>
         </VisuallyHidden>
         <Flex direction={'column'} gap={'4'} justify={'center'} align={'center'}>
           <Heading size={'8'}>🎉</Heading>
 
-          <Heading>All done!</Heading>
+          <Heading>{MSG_INVITE_SUCCESS.SUBTITLE_0}</Heading>
 
-          <Text>Great to have you on board! Stayed tuned for your welcome email.</Text>
+          <Text>{MSG_INVITE_SUCCESS.SUBTITLE_1}</Text>
 
           <Box>
             <Dialog.Close>

@@ -22,7 +22,6 @@ function useFormField() {
   const { getFieldState, formState } = useFormContext();
 
   if (!fieldContext) {
-    // TODO check message
     throw new Error('useFormField must be used within <FormField>');
   }
 

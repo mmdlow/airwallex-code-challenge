@@ -1,6 +1,7 @@
 import { forwardRef } from 'react';
-import { useFormField } from './use-form-field';
 import { Text } from '@radix-ui/themes';
+import { COLOR_ERROR } from '@/lib/constants';
+import { useFormField } from './use-form-field';
 
 const FormMessage = forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLParagraphElement>>(
   ({ children, ...props }, ref) => {
@@ -12,8 +13,15 @@ const FormMessage = forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLPa
     }
 
     return (
-      // TODO semantic color
-      <Text as="p" ref={ref} {...props} id={formMessageId} size={'1'} color="red" weight={'medium'}>
+      <Text
+        as="p"
+        ref={ref}
+        {...props}
+        id={formMessageId}
+        size={'1'}
+        color={COLOR_ERROR}
+        weight={'medium'}
+      >
         {body}
       </Text>
     );
