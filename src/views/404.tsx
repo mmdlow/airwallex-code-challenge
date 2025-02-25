@@ -1,38 +1,23 @@
-import { AspectRatio, Box, Button, Container, Flex, Heading, Section } from '@radix-ui/themes';
+import { Box, Button } from '@radix-ui/themes';
 import { Link } from 'react-router';
 import notFoundImg from '@/assets/404-img.svg';
+import { HeroContainer, HeroImage, HeroSubtitle, HeroTitle } from './layout/Hero';
 
 const Error404 = () => {
   return (
-    <Container size={'4'} px={'4'}>
-      <Flex height={'100%'} direction={'column'} align={'center'} justify={'center'}>
-        <Section>
-          <Flex gap={'6'} direction={'column'} align={'center'}>
-            <AspectRatio ratio={4 / 3}>
-              {/* TODO constrain size (?) */}
-              <img
-                src={notFoundImg}
-                style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-              />
-            </AspectRatio>
+    <HeroContainer size={'4'} px={'4'}>
+      <HeroImage src={notFoundImg} alt="404 not found image" />
 
-            <Heading as="h1" size={{ initial: '8', sm: '9' }} align={'center'}>
-              Oops!
-            </Heading>
+      <HeroTitle>Oops!</HeroTitle>
 
-            <Heading as="h2" size={{ initial: '5', sm: '6' }} weight={'medium'} align={'center'}>
-              The requested page could not be found.
-            </Heading>
+      <HeroSubtitle>The requested page could not be found.</HeroSubtitle>
 
-            <Box>
-              <Button asChild size={'3'}>
-                <Link to="/">Take me home</Link>
-              </Button>
-            </Box>
-          </Flex>
-        </Section>
-      </Flex>
-    </Container>
+      <Box>
+        <Button asChild size={'3'}>
+          <Link to="/">Take me home</Link>
+        </Button>
+      </Box>
+    </HeroContainer>
   );
 };
 
