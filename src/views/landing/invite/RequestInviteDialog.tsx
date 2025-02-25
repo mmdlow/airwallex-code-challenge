@@ -64,7 +64,6 @@ const RequestInviteDialog = forwardRef<
   const form = useForm({
     resolver: zodResolver(FormSchema),
     defaultValues: { name: '', email: '', confirmEmail: '' },
-    mode: 'onTouched',
   });
 
   const onSubmit: SubmitHandler<z.infer<typeof FormSchema>> = async ({ name, email }) => {
