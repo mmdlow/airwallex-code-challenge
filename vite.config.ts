@@ -1,3 +1,4 @@
+/// <reference types="vitest/config" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
@@ -10,6 +11,16 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': root,
+    },
+  },
+  test: {
+    browser: {
+      enabled: true,
+      provider: 'playwright',
+      instances: [{ browser: 'chromium' }, { browser: 'firefox' }],
+    },
+    coverage: {
+      provider: 'istanbul',
     },
   },
 });
