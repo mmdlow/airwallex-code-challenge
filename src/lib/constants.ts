@@ -29,7 +29,7 @@ export const MSG_FORM = {
   ERR_NAME_TOO_SHORT: `${ATTRIBUTES.NAME} is too short`,
   ERR_EMAIL_REQUIRED: `${ATTRIBUTES.EMAIL} is required`,
   ERR_EMAIL_INVALID: `Invalid ${ATTRIBUTES.EMAIL.toLocaleLowerCase()} provided`,
-  ERR_EMAIL_NO_MATCH: `${ATTRIBUTES.NAME}s do not match`,
+  ERR_EMAIL_NO_MATCH: `${ATTRIBUTES.EMAIL}s do not match`,
   HINT_NAME_REQUIRED: `${ATTRIBUTES.NAME} should be at least 3 characters.`,
 };
 
