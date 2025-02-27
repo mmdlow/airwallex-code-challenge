@@ -29,7 +29,7 @@ function createMutationFn<Payload, Response>({ path, fetchOpts }: CreateFetchFnO
         throw new Error(errRes.errorMessage);
       }
 
-      return (await res.json()) as Response;
+      return (await res.text()) as Response;
     } catch (error) {
       if (!(error instanceof Error)) throw new Error('Unknown error');
 

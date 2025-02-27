@@ -1,26 +1,25 @@
 /// <reference types="vitest/config" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import path from 'path';
+import path, { resolve } from 'path';
+import { fileURLToPath } from 'url';
 
-const root = path.resolve(__dirname, 'src');
+const dirname = fileURLToPath(new URL('src', import.meta.url));
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@': root,
+      '@': path.resolve(__dirname, 'src'),
     },
   },
   test: {
-    browser: {
-      enabled: true,
-      provider: 'playwright',
-      instances: [{ browser: 'chromium' }, { browser: 'firefox' }],
-    },
+    setupFiles: [resolve(dirname, './__tests__/setup.ts')],
+    globals: true,
+    environment: 'jsdom',
     coverage: {
-      provider: 'istanbul',
+      provider: 'v8',
     },
   },
 });

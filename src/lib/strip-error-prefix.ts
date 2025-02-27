@@ -12,7 +12,7 @@
 function stripErrorPrefix(error: string | Error) {
   const message = error instanceof Error ? error.message : error;
   const splitArray = message.split(':');
-  return splitArray.length > 1 ? splitArray[1].trim() : splitArray[0];
+  return splitArray.length > 1 ? splitArray.slice(1).join(':').trim() : splitArray[0];
 }
 
 export { stripErrorPrefix };
