@@ -1,5 +1,8 @@
 # Airwallex Code Challenge - Broccoli & Co.
 
+![Unit tests](https://github.com/mmdlow/airwallex-code-challenge/actions/workflows/unit-tests.yml/badge.svg)
+![E2E tests](https://github.com/mmdlow/airwallex-code-challenge/actions/workflows/e2e-tests.yml/badge.svg)
+
 ![Broccoli & Co. Landing page](docs/img/landing-page.png)
 
 Clean, minimal, and mobile-ready home page for the upcoming online service company, Broccoli & Co.
@@ -51,6 +54,8 @@ import styles from './Form.module.css';
 
 <div className={styles.Form} />;
 ```
+
+Site illustrations are courtesy of [DrawKit](https://www.drawkit.com/illustrations/larry-character-illustrations).
 
 ### API Layer & Query Management
 
