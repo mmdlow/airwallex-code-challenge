@@ -7,6 +7,17 @@ interface RequestInvitePayload {
 }
 
 /**
+ * Simple utility function to check if an error is a Bad Request error, signalling an email is
+ * already in use.
+ * @param error
+ * @returns
+ */
+function isBadRequest(error: Error | null) {
+  const prefix = 'Bad Request'.toLocaleLowerCase();
+  return error?.message.toLocaleLowerCase().startsWith(prefix) ?? false;
+}
+
+/**
  * Mutation function for managing request invite requests.
  * @param options
  * @returns
@@ -16,10 +27,9 @@ function useRequestInviteMutation(
 ) {
   return useMutation<void, Error, RequestInvitePayload>({
     mutationFn: createMutationFn({ path: 'fake-auth', fetchOpts: { method: 'POST' } }),
-    // TODO default onError handling, maybe with toasts
     ...options,
   });
 }
 
 export type { RequestInvitePayload };
-export { useRequestInviteMutation };
+export { useRequestInviteMutation, isBadRequest };

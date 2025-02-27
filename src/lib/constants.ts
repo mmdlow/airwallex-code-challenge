@@ -39,6 +39,10 @@ export const MSG_INVITE_SUCCESS = {
   SUBTITLE_1: 'Great to have you on board! Stayed tuned for your welcome email.',
 };
 
+export const MSG_NETWORK = {
+  CTA: 'Please try again later.',
+};
+
 export const ACTIONS = {
   CANCEL: 'Cancel',
   CLOSE: 'Close',

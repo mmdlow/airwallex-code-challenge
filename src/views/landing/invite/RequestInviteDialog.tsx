@@ -1,4 +1,4 @@
-import { useRequestInviteMutation } from '@/api/request-invite-mutation';
+import { isBadRequest, useRequestInviteMutation } from '@/api/request-invite-mutation';
 import { stripErrorPrefix } from '@/lib/strip-error-prefix';
 import {
   FormControl,
@@ -9,7 +9,7 @@ import {
   FormMessage,
 } from '@/views/components/form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button, Dialog, Flex, TextField } from '@radix-ui/themes';
+import { Button, Callout, Dialog, Flex, TextField } from '@radix-ui/themes';
 import {
   ComponentPropsWithoutRef,
   ComponentRef,
@@ -20,7 +20,7 @@ import {
 } from 'react';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
-import { ATTRIBUTES, ACTIONS, MSG_FORM } from '@/lib/constants';
+import { ATTRIBUTES, ACTIONS, MSG_FORM, COLOR_ERROR, MSG_NETWORK } from '@/lib/constants';
 import { InviteContext } from './InviteContext';
 import { DIALOG_MAX_WIDTH } from './Dialog.utils';
 
@@ -48,16 +48,23 @@ const RequestInviteDialog = forwardRef<
   const { setOpenSuccessDialog } = useContext(InviteContext);
   const [open, setOpen] = useState(false);
 
-  const { mutate: requestInvite, isPending } = useRequestInviteMutation({
+  const {
+    mutate: requestInvite,
+    isPending,
+    isError,
+    error,
+  } = useRequestInviteMutation({
     onSuccess: () => {
       setOpen(false);
       setOpenSuccessDialog(true);
     },
     onError: error => {
-      form.setError('email', {
-        type: 'in_use',
-        message: stripErrorPrefix(error),
-      });
+      if (isBadRequest(error)) {
+        form.setError('email', {
+          type: 'in_use',
+          message: stripErrorPrefix(error),
+        });
+      }
     },
   });
 
@@ -88,6 +95,17 @@ const RequestInviteDialog = forwardRef<
         <FormProvider {...form}>
           <form id={formId} onSubmit={form.handleSubmit(onSubmit)}>
             <Flex direction={'column'} gap={'4'} py={'3'}>
+              {/* Handle non-used-email error cases */}
+              {isError && !isBadRequest(error) && (
+                <Callout.Root variant="surface" color={COLOR_ERROR}>
+                  <Callout.Text>
+                    {error.message}
+                    {error.message.length ? '. ' : ''}
+                    {MSG_NETWORK.CTA}
+                  </Callout.Text>
+                </Callout.Root>
+              )}
+
               <FormField
                 control={form.control}
                 name="name"
