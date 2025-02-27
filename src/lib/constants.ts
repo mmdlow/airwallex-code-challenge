@@ -22,6 +22,22 @@ export const MSG_FOOTER = {
   1: 'Made with ❤️ in Singapore.',
 };
 
+export const MSG_HERO = {
+  TITLE: {
+    0: 'A better way',
+    1: 'to enjoy everyday.',
+  },
+  DESC: {
+    0: "We're building a revolutionary new online service.",
+    1: 'Be the first to know when we launch.',
+  },
+};
+
+export const MSG_404 = {
+  TITLE: 'Oops!',
+  DESC: 'The requested page could not be found.',
+};
+
 export const MSG_FORM = {
   TITLE: 'Request an invite',
   EMAIL_CONFIRM: `Confirm ${ATTRIBUTES.EMAIL.toLocaleLowerCase()}`,

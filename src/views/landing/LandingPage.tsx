@@ -3,8 +3,8 @@ import RequestInviteDialog from './invite/RequestInviteDialog';
 import { InviteContextProvider } from './invite/InviteContext';
 import RequestInviteSuccessDialog from './invite/RequestInviteSuccessDialog';
 import { HeroContainer, HeroImage, HeroSubtitle, HeroTitle } from '../layout/Hero';
-import heroImg from '@/assets/hero-img.svg';
-import { COLOR_ACCENT } from '@/lib/constants';
+import heroImg from '/hero-img.svg';
+import { COLOR_ACCENT, MSG_HERO } from '@/lib/constants';
 
 const LandingPage = () => {
   return (
@@ -12,16 +12,16 @@ const LandingPage = () => {
       <HeroImage src={heroImg} alt="Hero image" />
 
       <HeroTitle>
-        <Text style={{ display: 'block' }}>A better way</Text>
+        <Text style={{ display: 'block' }}>{MSG_HERO.TITLE[0]}</Text>
         <Text color={COLOR_ACCENT} style={{ display: 'block' }}>
-          to enjoy everyday.
+          {MSG_HERO.TITLE[1]}
         </Text>
       </HeroTitle>
 
       <HeroSubtitle>
-        We're building a revolutionary new online service.
+        {MSG_HERO.DESC[0]}
         <br />
-        Be the first to know when we launch.
+        {MSG_HERO.DESC[1]}
       </HeroSubtitle>
 
       <Box>

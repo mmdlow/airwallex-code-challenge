@@ -93,7 +93,7 @@ const RequestInviteDialog = forwardRef<
         <Dialog.Title>{MSG_FORM.TITLE}</Dialog.Title>
 
         <FormProvider {...form}>
-          <form id={formId} onSubmit={form.handleSubmit(onSubmit)}>
+          <form id={formId} onSubmit={form.handleSubmit(onSubmit)} noValidate>
             <Flex direction={'column'} gap={'4'} py={'3'}>
               {/* Handle non-used-email error cases */}
               {isError && !isBadRequest(error) && (
@@ -128,7 +128,7 @@ const RequestInviteDialog = forwardRef<
                   <FormItem>
                     <FormLabel required>{ATTRIBUTES.EMAIL}</FormLabel>
                     <FormControl>
-                      <TextField.Root {...field} />
+                      <TextField.Root {...field} type="email" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -142,7 +142,7 @@ const RequestInviteDialog = forwardRef<
                   <FormItem>
                     <FormLabel required>{MSG_FORM.EMAIL_CONFIRM}</FormLabel>
                     <FormControl>
-                      <TextField.Root {...field} />
+                      <TextField.Root {...field} type="email" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
