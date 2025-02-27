@@ -3,9 +3,13 @@ name: E2E tests
 on:
   pull_request:
     branches: [main]
+    paths:
+      - 'src/**'
 
   push:
     branches: [main]
+    paths:
+      - 'src/**'
 
 jobs:
   build:
