@@ -1,5 +1,5 @@
 import { ComponentPropsWithoutRef, ComponentRef, forwardRef, ImgHTMLAttributes } from 'react';
-import { AspectRatio, Container, Flex, Heading, Section } from '@radix-ui/themes';
+import { AspectRatio, Container, Flex, Heading, Section, Text } from '@radix-ui/themes';
 import clsx from 'clsx';
 import { layoutPaddingX } from './Layout.utils';
 import styles from './Hero.module.css';
@@ -42,21 +42,13 @@ const HeroTitle = forwardRef<
 
 HeroTitle.displayName = 'HeroTitle';
 
-const HeroSubtitle = forwardRef<
-  ComponentRef<typeof Heading>,
-  ComponentPropsWithoutRef<typeof Heading>
->(({ children, ...props }, ref) => (
-  <Heading
-    ref={ref}
-    as="h2"
-    size={{ initial: '5', sm: '6' }}
-    weight={'medium'}
-    align={'center'}
-    {...props}
-  >
-    {children}
-  </Heading>
-));
+const HeroSubtitle = forwardRef<ComponentRef<typeof Text>, ComponentPropsWithoutRef<typeof Text>>(
+  ({ children, ...props }, ref) => (
+    <Text ref={ref} size={{ initial: '5', sm: '6' }} weight={'medium'} align={'center'} {...props}>
+      {children}
+    </Text>
+  ),
+);
 
 HeroSubtitle.displayName = 'HeroSubtitle';
 

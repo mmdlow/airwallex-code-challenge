@@ -57,6 +57,8 @@ import styles from './Form.module.css';
 
 Site illustrations are courtesy of [DrawKit](https://www.drawkit.com/illustrations/larry-character-illustrations).
 
+Display font used is [Clash Display](https://www.fontshare.com/fonts/clash-display), main body font used is [General Sans](https://www.fontshare.com/fonts/general-sans).
+
 ### API Layer & Query Management
 
 The app leverages [Tanstack Query](https://tanstack.com/query/latest) to wrap native Fetch requests and manage request states. This allows us to easily hook into loading or error states for ongoing queries/mutations and display the corresponding UI, e.g. a loading spinner.

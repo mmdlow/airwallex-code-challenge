@@ -1,5 +1,11 @@
+@import url('../assets/fonts/clash-display/css/clash-display.css');
+@import url('../assets/fonts/general-sans/css/general-sans.css');
+
 .radix-themes {
   --cursor-button: pointer;
+  --font-weight-bold: 600;
+  --default-font-family: 'GeneralSans-Variable', system-ui;
+  --heading-font-family: 'ClashDisplay-Variable', var(--default-font-family);
 }
 
 body {
