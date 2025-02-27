@@ -16,6 +16,15 @@ const FormFieldContext = createContext<FormFieldContextValue>({} as FormFieldCon
 
 const FormItemContext = createContext<FormItemContextValue>({} as FormItemContextValue);
 
+/**
+ * Hook to provide `FormFieldContext` and `FormItemContext` data to child components.
+ * Generally used by `Form*` components, all of which must be wrapped in the `FormField` component
+ * which in turn wraps them in the context provider components.
+ *
+ * Based on https://ui.shadcn.com/docs/components/form
+ *
+ * @returns
+ */
 function useFormField() {
   const fieldContext = useContext(FormFieldContext);
   const itemContext = useContext(FormItemContext);

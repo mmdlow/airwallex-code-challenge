@@ -3,6 +3,9 @@ import { Text } from '@radix-ui/themes';
 import { COLOR_MUTED } from '@/lib/constants';
 import { useFormField } from './use-form-field';
 
+/**
+ * Describes the form input component. Rendered as small text accompanying the input component.
+ */
 const FormDescription = forwardRef<
   HTMLParagraphElement,
   React.HTMLAttributes<HTMLParagraphElement>

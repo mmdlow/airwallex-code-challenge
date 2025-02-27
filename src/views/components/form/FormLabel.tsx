@@ -8,6 +8,9 @@ interface FormLabelProps extends ComponentPropsWithoutRef<typeof RadixLabel.Root
   required?: boolean;
 }
 
+/**
+ * Label for a form input component.
+ */
 const Label = forwardRef<ComponentRef<typeof RadixLabel.Root>, FormLabelProps>(
   ({ children, required = false, ...props }, ref) => {
     const { formItemId, error } = useFormField();

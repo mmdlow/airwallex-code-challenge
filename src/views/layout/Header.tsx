@@ -1,6 +1,6 @@
 import { Box, Flex, Heading } from '@radix-ui/themes';
 import clsx from 'clsx';
-import { BRAND } from '@/lib/constants';
+import { BRAND, COLOR_ACCENT } from '@/lib/constants';
 import { navHeight, navPaddingX, navPaddingY } from './Layout.utils';
 import styles from './Layout.module.css';
 
@@ -18,7 +18,7 @@ const Header = () => {
     >
       <header>
         <Flex align={'center'} gap={'2'} height={'100%'}>
-          <Heading>{BRAND}</Heading>
+          <Heading color={COLOR_ACCENT}>{BRAND}</Heading>
         </Flex>
       </header>
     </Box>

@@ -9,7 +9,6 @@ const HeroContainer = forwardRef<
   ComponentPropsWithoutRef<typeof Container>
 >(({ children, ...props }, ref) => (
   <Container ref={ref} size={'4'} px={layoutPaddingX} {...props}>
-    {/* TODO set `height: 100%` property for `.rt-ContainerInner` class */}
     <Flex height={'100%'} direction={'column'} align={'center'} justify={'center'}>
       <Section>
         <Flex gap={'6'} direction={'column'} align={'center'}>

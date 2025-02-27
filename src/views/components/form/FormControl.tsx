@@ -2,6 +2,9 @@ import { Slot } from '@radix-ui/themes';
 import { ComponentPropsWithoutRef, ComponentRef, forwardRef } from 'react';
 import { useFormField } from './use-form-field';
 
+/**
+ * Wraps input components and provides the `react-hook-form` states to them.
+ */
 const FormControl = forwardRef<ComponentRef<typeof Slot>, ComponentPropsWithoutRef<typeof Slot>>(
   (props, ref) => {
     const { error, formItemId, formMessageId, formDescriptionId } = useFormField();
