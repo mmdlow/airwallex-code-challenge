@@ -10,7 +10,7 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Theme accentColor={COLOR_ACCENT}>
       <App />
-      <ThemePanel />
+      {import.meta.env.DEV && <ThemePanel />}
     </Theme>
   </StrictMode>,
 );
